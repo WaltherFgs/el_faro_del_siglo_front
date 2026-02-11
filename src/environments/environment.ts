@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://elfarodelsiglo_api.walther1991.digital'
+    apiUrl: 'https://apiv1.walther1991.digital'
 };
