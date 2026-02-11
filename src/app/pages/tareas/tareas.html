@@ -1,0 +1,68 @@
+<section class="bg-brand-slate py-40 px-6">
+    <div class="max-w-7xl mx-auto text-center animate-fade-in">
+        <h3 class="text-brand-gold text-[10px] font-bold uppercase tracking-[0.6em] mb-12">Compromiso Diario • El Faro
+        </h3>
+        <h1
+            class="text-5xl md:text-8xl font-serif font-bold text-brand-paper tracking-tighter uppercase leading-none mb-12">
+            Plan del <br><span class="italic text-brand-gold/60">Ciudadano Juicioso</span>
+        </h1>
+        <div class="w-16 h-1 bg-brand-gold mx-auto"></div>
+    </div>
+</section>
+
+<section class="bg-brand-paper py-40 px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-12 gap-32">
+
+            <div class="lg:col-span-8 space-y-12">
+                <div class="reveal-on-scroll">
+                    <h4 class="text-brand-emerald text-[10px] font-bold uppercase tracking-[0.5em] mb-12">¿Qué bien por
+                        mi patria haré hoy?</h4>
+                    <div class="space-y-6">
+                        @for (t of getTareasBySeccion('patria'); track t.id) {
+                        <div
+                            class="group flex items-center gap-8 p-10 bg-white shadow-sm border border-brand-slate/5 hover:border-brand-emerald transition-all duration-700">
+                            <input type="checkbox"
+                                class="w-8 h-8 rounded-sm border-brand-slate/10 text-brand-emerald focus:ring-brand-emerald">
+                            <p
+                                class="text-brand-slate/80 text-2xl font-serif italic group-hover:text-brand-emerald transition-colors">
+                                {{ t.texto }}</p>
+                        </div>
+                        }
+
+                        @if (getTareasBySeccion('patria').length === 0) {
+                        <div class="py-10 text-center border border-dashed border-brand-slate/10 opacity-30">
+                            <p class="font-serif italic">Buscando compromisos diarios...</p>
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-4 reveal-on-scroll">
+                <div class="bg-brand-slate p-16 text-brand-paper shadow-2xl relative overflow-hidden group">
+                    <div
+                        class="absolute inset-0 bg-brand-emerald opacity-0 group-hover:opacity-10 transition-opacity duration-1000">
+                    </div>
+                    <h3 class="text-brand-gold text-[10px] font-bold uppercase tracking-[0.4em] mb-12">Horario del
+                        Juicio</h3>
+                    <div class="space-y-12">
+                        @for (t of getTareasBySeccion('horario'); track t.id) {
+                        <div class="border-l-2 border-brand-gold/30 pl-8">
+                            <h4 class="text-brand-gold text-[9px] font-bold uppercase mb-4">{{ t.titulo }}</h4>
+                            <p class="text-xl font-serif italic opacity-60">{{ t.texto }}</p>
+                        </div>
+                        }
+
+                        @if (getTareasBySeccion('horario').length === 0) {
+                        <div class="border-l-2 border-brand-gold/10 pl-8 opacity-20">
+                            <p class="text-sm font-serif italic">Estableciendo el horario del juicio...</p>
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

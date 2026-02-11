@@ -1,0 +1,79 @@
+<!-- Minimalist Hero: History -->
+<section class="bg-brand-slate py-40 border-b border-brand-paper/5">
+    <div class="max-w-4xl mx-auto px-6 text-center animate-fade-in">
+        <h3 class="text-brand-gold text-[10px] font-bold uppercase tracking-[0.5em] mb-12">Bitácora de la Patria</h3>
+        <h1 class="text-6xl md:text-8xl font-serif font-bold text-brand-paper leading-none tracking-tighter italic">
+            Hitos de Nuestra <br><span class="not-italic text-brand-gold/60">Historia</span></h1>
+    </div>
+</section>
+
+<!-- Content: Minimalist Timeline -->
+<section class="bg-brand-paper py-40 px-6 relative overflow-hidden">
+    <!-- Center Line -->
+    <div class="absolute left-1/2 transform -translate-x-1/2 w-px h-full bg-brand-gold/20 top-0"></div>
+
+    <div class="max-w-5xl mx-auto relative z-10">
+        <div class="space-y-40">
+            @for (event of acontecimientos; track event.id; let i = $index) {
+            <!-- Event Row -->
+            <article class="relative grid md:grid-cols-2 gap-12 items-center reveal-on-scroll"
+                [class.md:text-right]="i % 2 === 0">
+                <!-- Dot on the line -->
+                <div
+                    class="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-brand-gold rounded-full z-20 border-4 border-brand-paper">
+                </div>
+
+                <!-- Year label (Always on opposite side) -->
+                <div [class.md:order-2]="i % 2 === 0" [class.md:text-left]="i % 2 === 0">
+                    <span
+                        class="text-6xl md:text-8xl font-serif font-bold text-brand-slate/10 italic select-none block md:inline-block">{{event.anio}}</span>
+                </div>
+
+                <!-- Content Card -->
+                <div [class.md:order-1]="i % 2 === 0"
+                    class="p-8 border border-brand-slate/5 bg-white shadow-sm hover:shadow-md transition-all">
+                    <h4 class="text-brand-gold text-[9px] font-bold uppercase tracking-[0.4em] mb-6">{{event.ubicacion
+                        || 'Colombia'}}</h4>
+                    <h2 class="text-3xl font-serif font-bold text-brand-slate mb-6 leading-tight">{{event.titulo}}</h2>
+                    <p class="text-brand-slate/60 text-lg font-serif italic leading-relaxed mb-8 whitespace-pre-wrap">
+                        {{event.descripcion}}
+                    </p>
+
+                    @if (event.detalle) {
+                    <button (click)="toggleEvent('event' + event.id)"
+                        class="text-[9px] font-bold uppercase tracking-[0.3em] text-brand-emerald border-b border-brand-emerald/30 pb-2 hover:text-brand-gold hover:border-brand-gold transition-all">
+                        {{ expandedEvents['event' + event.id] ? '- Menos Información' : '+ Ver Detalles' }}
+                    </button>
+
+                    @if (expandedEvents['event' + event.id]) {
+                    <div class="mt-8 pt-8 border-t border-brand-slate/5 animate-fade-in">
+                        <p
+                            class="text-brand-slate/50 text-base font-serif leading-relaxed text-pretty whitespace-pre-wrap">
+                            {{event.detalle}}
+                        </p>
+                    </div>
+                    }
+                    }
+                </div>
+            </article>
+            }
+
+            <!-- Fallback -->
+            @if (acontecimientos.length === 0) {
+            <div class="text-center py-24 relative z-20 animate-fade-in">
+                <p class="text-brand-slate/20 text-xl font-serif italic text-pretty">Investigando en los archivos de la
+                    memoria nacional...</p>
+            </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Final Section -->
+<section class="bg-brand-slate py-40 border-t border-brand-paper/5 text-center">
+    <div class="max-w-2xl mx-auto px-6 reveal-on-scroll">
+        <p class="text-brand-paper/40 text-2xl font-serif italic leading-relaxed">
+            "La historia no es el pasado, es el suelo sobre el que construimos el hoy."
+        </p>
+    </div>
+</section>

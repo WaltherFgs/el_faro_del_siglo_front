@@ -1,0 +1,98 @@
+<!-- Minimalist Header -->
+<section class="relative h-[50vh] flex items-center justify-center bg-brand-slate">
+    <div class="relative z-10 text-center px-6 animate-fade-in">
+        <h3 class="text-brand-gold text-[10px] font-bold uppercase tracking-[0.6em] mb-12">Principios de Juicio • El
+            Origen</h3>
+        <h1 class="text-6xl md:text-[8rem] font-serif font-bold text-brand-paper tracking-tighter leading-none mb-8">
+            Sabiduría <br><span class="italic text-brand-gold/60">de Nuestra Tierra</span>
+        </h1>
+        <div class="w-16 h-px bg-brand-gold mx-auto mt-12 opacity-30"></div>
+    </div>
+</section>
+
+<!-- Content: Minimalist Grid -->
+<section class="bg-brand-paper py-40 px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-12 gap-16 items-start">
+
+            @for (p of pilares; track p.id) {
+            <!-- Dynamic Pilar Card -->
+            <div [class.lg:col-span-12]="p.numero === 'Pilar I'" [class.lg:col-span-6]="p.numero !== 'Pilar I'"
+                class="reveal-on-scroll border border-brand-slate/5 p-12 shadow-sm transition-all duration-500 hover:shadow-xl"
+                [ngClass]="p.numero === 'Pilar II' ? 'bg-brand-slate text-brand-paper' : 'bg-white text-brand-slate'">
+
+                <div [class.grid]="p.numero === 'Pilar I'" [class.md:grid-cols-5]="p.numero === 'Pilar I'"
+                    class="gap-16">
+                    <div [class.md:col-span-2]="p.numero === 'Pilar I'">
+                        <h4 class="text-brand-gold text-[10px] font-bold uppercase tracking-[0.4em] mb-10">{{ p.numero
+                            }}</h4>
+                        <h3 class="text-4xl md:text-5xl font-serif font-bold italic leading-tight mb-8">{{ p.titulo }}
+                        </h3>
+                        <p class="text-brand-slate/50 text-xl font-serif italic leading-relaxed"
+                            [class.text-brand-paper/50]="p.numero === 'Pilar II'">
+                            "{{ p.frase_destacada }}"
+                        </p>
+                    </div>
+                    <div [class.md:col-span-3]="p.numero === 'Pilar I'" class="space-y-12"
+                        [class.mt-12]="p.numero !== 'Pilar I'">
+                        <article class="group">
+                            <p class="text-2xl font-serif italic leading-tight transition-colors"
+                                [class.text-brand-slate/80]="p.numero !== 'Pilar II'"
+                                [class.text-brand-paper/80]="p.numero === 'Pilar II'"
+                                [class.group-hover:text-brand-emerald]="p.numero !== 'Pilar II'"
+                                [class.group-hover:text-brand-gold]="p.numero === 'Pilar II'">
+                                "{{ p.item_1 }}"</p>
+                        </article>
+                        <article class="group pt-8 border-t border-brand-slate/5"
+                            [class.border-white/5]="p.numero === 'Pilar II'">
+                            <p class="text-2xl font-serif italic leading-tight transition-colors"
+                                [class.text-brand-slate/80]="p.numero !== 'Pilar II'"
+                                [class.text-brand-paper/80]="p.numero === 'Pilar II'"
+                                [class.group-hover:text-brand-emerald]="p.numero !== 'Pilar II'"
+                                [class.group-hover:text-brand-gold]="p.numero === 'Pilar II'">
+                                "{{ p.item_2 }}"</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            }
+
+            @if (pilares.length === 0) {
+            <div class="lg:col-span-12 py-20 text-center border border-dashed border-brand-slate/10">
+                <p class="text-brand-slate/30 font-serif italic text-2xl">Atesorando los pilares de la sabiduría...</p>
+            </div>
+            }
+
+        </div>
+    </div>
+</section>
+
+<!-- Refranero Gallery -->
+<section class="bg-brand-slate py-40 px-6 overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+        <h4 class="text-brand-gold text-[10px] font-bold uppercase tracking-[0.6em] mb-20 text-center">El Refranero
+            Popular</h4>
+        <div class="columns-1 md:columns-2 lg:columns-3 gap-12 space-y-12">
+            @for (r of refranes; track r.id) {
+            <div
+                class="break-inside-avoid border border-white/5 p-10 group hover:border-brand-gold/30 transition-all duration-500 reveal-on-scroll">
+                <span class="text-brand-gold text-[8px] font-bold uppercase tracking-widest mb-4 block">{{ r.categoria
+                    }}</span>
+                <p
+                    class="text-2xl font-serif italic text-brand-paper/70 leading-relaxed group-hover:text-brand-paper transition-colors">
+                    "{{ r.texto }}"
+                </p>
+            </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Simple Footer Quote -->
+<section class="bg-brand-paper py-40 text-center border-t border-brand-slate/5">
+    <div class="relative z-10 max-w-4xl mx-auto px-6 reveal-on-scroll">
+        <p class="text-4xl md:text-5xl font-serif font-bold text-brand-slate/40 tracking-tighter italic leading-tight">
+            "El buen ciudadano es aquel que analiza su entorno con la serenidad de quien conoce su propia alma."
+        </p>
+    </div>
+</section>

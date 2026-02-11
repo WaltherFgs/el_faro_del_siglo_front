@@ -1,0 +1,51 @@
+<!-- Minimalist Header -->
+<section class="relative h-[50vh] flex items-center justify-center bg-brand-slate">
+    <div class="relative z-10 text-center px-6 animate-fade-in">
+        <h3 class="text-brand-gold text-[10px] font-bold uppercase tracking-[0.6em] mb-12">Sabiduría Popular • El
+            Refranero</h3>
+        <h1 class="text-6xl md:text-[9rem] font-serif font-bold text-brand-paper tracking-tighter leading-none mb-8">
+            Ecos del <br><span class="italic text-brand-gold/60">Pueblo</span>
+        </h1>
+        <div class="w-16 h-px bg-brand-gold mx-auto mt-12 opacity-30"></div>
+    </div>
+</section>
+
+<!-- Content: Minimalist Gallery (Dynamic) -->
+<section class="bg-brand-paper py-40 px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+
+            @for (refran of refranes; track refran.id) {
+            <!-- Dynamic Card -->
+            <article
+                class="group bg-white p-12 shadow-sm border border-brand-slate/5 hover:border-brand-emerald transition-all duration-700 reveal-on-scroll">
+                <span
+                    class="text-brand-gold text-4xl font-serif mb-8 block transition-transform duration-700 group-hover:scale-110">“</span>
+                <p class="text-3xl font-serif text-brand-slate italic mb-10 leading-tight">"{{refran.texto}}"</p>
+                <div class="flex items-center gap-4">
+                    <span class="text-[9px] font-bold uppercase tracking-[0.3em] text-brand-slate/40 text-pretty">Sobre
+                        la {{refran.categoria || 'Sabiduría'}}</span>
+                </div>
+            </article>
+            }
+
+            <!-- Fallback if empty -->
+            @if (refranes.length === 0) {
+            <div class="col-span-full py-24 text-center border border-dashed border-brand-slate/10 animate-fade-in">
+                <p class="text-brand-slate/20 text-xs font-serif italic text-pretty">El refranero está siendo recopilado
+                    en la bitácora del Faro...</p>
+            </div>
+            }
+
+        </div>
+    </div>
+</section>
+
+<!-- Simple Footer Quote -->
+<section class="bg-brand-paper py-40 text-center border-t border-brand-slate/5">
+    <div class="max-w-3xl mx-auto px-6 reveal-on-scroll">
+        <p class="text-3xl md:text-4xl font-serif italic text-brand-slate/40 leading-tight">
+            "La sabiduría popular es el eco de la experiencia de los siglos."
+        </p>
+    </div>
+</section>

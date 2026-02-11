@@ -1,0 +1,54 @@
+<!-- Minimalist Header -->
+<section class="relative h-[50vh] flex items-center justify-center bg-brand-slate">
+    <div class="relative z-10 text-center px-6 animate-fade-in">
+        <h3 class="text-brand-gold text-[10px] font-bold uppercase tracking-[0.5em] mb-12">Ecos de la Conciencia • El
+            Pensamiento</h3>
+        <h1 class="text-6xl md:text-[9rem] font-serif font-bold text-brand-paper tracking-tighter leading-none mb-4">
+            Reflexiones <br><span class="italic text-brand-gold/60">Ciudadanas</span>
+        </h1>
+        <div class="w-16 h-px bg-brand-gold mx-auto mt-12 opacity-30"></div>
+    </div>
+</section>
+
+<!-- Content: Minimalist Typography (Dynamic) -->
+<section class="bg-brand-paper py-40 px-6">
+    <div class="max-w-5xl mx-auto">
+        <div class="space-y-32">
+
+            @for (articulo of articulos; track articulo.id; let i = $index) {
+            <!-- Dynamic Reflection -->
+            <article class="relative grid md:grid-cols-12 gap-16 items-start reveal-on-scroll">
+                <div class="md:col-span-2 text-brand-gold font-serif text-6xl italic opacity-20 select-none">{{ (i + 1)
+                    | number: '2.0' }}</div>
+                <div class="md:col-span-10">
+                    <p
+                        class="text-4xl md:text-5xl font-serif text-brand-slate italic leading-tight mb-12 whitespace-pre-wrap text-pretty">
+                        "{{articulo.contenido}}"
+                    </p>
+                    <div class="flex items-center gap-6 group">
+                        <div class="w-12 h-px bg-brand-emerald group-hover:w-16 transition-all"></div>
+                        <span
+                            class="text-[9px] font-bold uppercase tracking-[0.3em] text-brand-emerald">{{articulo.titulo}}</span>
+                    </div>
+                </div>
+            </article>
+
+            <div class="h-px bg-brand-slate/5"></div>
+            }
+
+            <!-- Fallback if empty -->
+            @if (articulos.length === 0) {
+            <div class="py-24 text-center border border-dashed border-brand-slate/10 animate-fade-in">
+                <p class="text-brand-slate/20 text-xl font-serif italic text-pretty">Esperando nuevas luces en la
+                    conciencia ciudadana...</p>
+            </div>
+            }
+        </div>
+
+        <div class="mt-40 text-center reveal-on-scroll">
+            <p class="text-brand-slate/30 text-xl font-serif italic max-w-xl mx-auto">
+                "Educando la mente para que el corazón no se pierda en el ruido de la actualidad."
+            </p>
+        </div>
+    </div>
+</section>

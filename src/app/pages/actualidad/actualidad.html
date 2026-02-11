@@ -1,0 +1,99 @@
+<!-- Minimalist Header: The Gaceta -->
+<section class="relative h-[50vh] flex items-center justify-center bg-brand-slate">
+    <div class="relative z-10 text-center px-6 animate-fade-in">
+        <h3 class="text-brand-gold text-[10px] font-bold uppercase tracking-[0.5em] mb-10">Boletín Oficial de Análisis
+        </h3>
+        <h1 class="text-6xl md:text-[8rem] font-serif font-bold text-brand-paper tracking-tighter leading-none mb-8">
+            La Gaceta <span class="italic text-brand-gold/60">del Faro</span>
+        </h1>
+        <div class="flex items-center justify-center gap-8 text-brand-paper/30 font-serif italic text-xl">
+            Bogotá, D.C. • Edición Ciudadana
+        </div>
+    </div>
+</section>
+
+<!-- Content: Minimalist Hierarchy -->
+<section class="bg-brand-paper py-40 px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-12 gap-24 items-start">
+
+            <!-- Main Feed -->
+            <div class="lg:col-span-8 space-y-32">
+
+                @for (articulo of articulos; track articulo.id) {
+                <!-- Dynamic Feature Story -->
+                <article class="group reveal-on-scroll">
+                    <h4 class="text-brand-emerald text-[9px] font-bold uppercase tracking-[0.3em] mb-6">Editorial
+                        Central • {{articulo.fecha | date:'mediumDate'}}</h4>
+                    <h2
+                        class="text-5xl md:text-7xl font-serif font-bold text-brand-slate leading-[0.9] tracking-tighter mb-12 group-hover:text-brand-emerald transition-colors">
+                        {{articulo.titulo}}
+                    </h2>
+                    <p
+                        class="text-brand-slate/60 text-2xl font-serif italic leading-relaxed mb-12 text-pretty whitespace-pre-wrap">
+                        {{articulo.contenido}}
+                    </p>
+                    <div class="flex items-center gap-6">
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-brand-gold/60">Por:
+                            {{articulo.autor || 'Mesa Editorial'}}</span>
+                        <div class="w-12 h-px bg-brand-gold/40"></div>
+                    </div>
+                </article>
+
+                <div class="h-px bg-brand-slate/5"></div>
+                }
+
+                @if (articulos.length === 0) {
+                <div class="py-24 text-center border border-dashed border-brand-slate/10 animate-fade-in">
+                    <p class="text-brand-slate/20 text-xl font-serif italic text-pretty">Aguardando la próxima edición
+                        de la Gaceta...</p>
+                </div>
+                }
+
+            </div>
+
+            <!-- Sidebar (Dynamic Columnistas and Static Principles) -->
+            <aside class="lg:col-span-4 space-y-12">
+                <div class="p-10 border border-brand-slate/5 bg-white/50 reveal-on-scroll">
+                    <h4 class="text-brand-gold text-[10px] font-bold uppercase tracking-[0.5em] mb-12">Mesa Editorial
+                    </h4>
+                    <div class="space-y-10">
+                        @for (c of columnistas; track c.id) {
+                        <div class="group cursor-pointer">
+                            <p
+                                class="text-brand-slate/80 font-serif italic text-xl leading-tight mb-3 group-hover:text-brand-emerald transition-colors">
+                                "{{ c.frase_destacada || (c.biografia | slice:0:60) + '...' }}"</p>
+                            <span class="text-[9px] font-bold uppercase tracking-widest text-brand-gold/60">{{ c.nombre
+                                }}</span>
+                        </div>
+                        }
+
+                        @if (columnistas.length === 0) {
+                        <p class="text-brand-slate/20 text-xs font-serif italic">Mesa editorial en formación...</p>
+                        }
+                    </div>
+                </div>
+
+                <div class="p-10 border border-brand-slate/5 bg-brand-slate text-brand-paper reveal-on-scroll">
+                    <h4 class="text-brand-gold text-[10px] font-bold uppercase tracking-[0.5em] mb-8">Sabiduría Civil
+                    </h4>
+                    <blockquote class="text-2xl font-serif italic mb-10 leading-tight">
+                        "Educar el juicio es cultivar el mejor campo de la patria."
+                    </blockquote>
+                    <div class="w-8 h-px bg-brand-gold/40"></div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+
+<!-- Simple Footer Quote -->
+<section class="bg-brand-slate py-40 text-center relative overflow-hidden">
+    <div class="relative z-10 max-w-4xl mx-auto px-6 reveal-on-scroll">
+        <h3 class="text-brand-gold text-[10px] font-bold uppercase tracking-[0.8em] mb-12 opacity-30">El Archivo del
+            Faro</h3>
+        <p class="text-4xl md:text-5xl font-serif italic text-brand-paper/60 leading-tight">
+            "Todo análisis requiere memoria."
+        </p>
+    </div>
+</section>
