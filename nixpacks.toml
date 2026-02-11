@@ -1,0 +1,16 @@
+provider = "node"
+
+[phases.setup]
+nixPkgs = ["nodejs_20"]
+
+[phases.install]
+cmds = ["npm ci --include=dev"]
+
+[phases.build]
+cmds = ["npm run build"]
+
+[phases.start]
+cmd = "node server.js"
+
+[variables]
+NIXPACKS_NODE_VERSION = "20"
