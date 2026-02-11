@@ -50,6 +50,9 @@ app.use((req, res) => {
     }
 });
 
+// Use PORT from environment or default to 3000
+const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Servidor Frontend iniciado.`);
     console.log(`-> Escuchando en el puerto: ${PORT}`);
