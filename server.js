@@ -24,27 +24,34 @@ try {
     console.error('Error listing files:', err);
 }
 
-app.use(express.static(__dirname + '/dist/browser'));
+// Determine correct static path
+let staticPath = path.join(__dirname, 'dist', 'browser');
+// Check if index.html is in dist/browser or dist/browser/browser (Angular 17+ nuance)
+if (!fs.existsSync(path.join(staticPath, 'index.html')) && fs.existsSync(path.join(staticPath, 'browser', 'index.html'))) {
+    staticPath = path.join(staticPath, 'browser');
+}
+
+console.log(`Resolved static path: ${staticPath}`);
+if (fs.existsSync(staticPath)) {
+    console.log(`Static path contents:`, fs.readdirSync(staticPath));
+} else {
+    console.error(`ERROR: Static path ${staticPath} does not exist!`);
+}
+
+app.use(express.static(staticPath));
 
 // Fallback to index.html for SPA
 app.use((req, res) => {
-    const indexPath = path.join(__dirname, 'dist', 'browser', 'index.html');
+    const indexPath = path.join(staticPath, 'index.html');
     if (fs.existsSync(indexPath)) {
         res.sendFile(indexPath);
     } else {
-        res.status(404).send('Index file not found. Check logs for directory structure.');
+        res.status(404).send(`Index file not found at ${indexPath}. Directory: ${fs.readdirSync(staticPath)}`);
     }
-});
-
-// Use PORT from environment or default to 3000
-const PORT = process.env.PORT || 3000;
-
-app.get('/health', (req, res) => {
-    res.status(200).send('OK');
 });
 
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Servidor Frontend iniciado.`);
     console.log(`-> Escuchando en el puerto: ${PORT}`);
-    console.log(`-> Sirviendo archivos desde: ${path.join(__dirname, '/dist/browser')}`);
+    console.log(`-> Sirviendo archivos desde: ${staticPath}`);
 });
