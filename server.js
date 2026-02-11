@@ -9,7 +9,7 @@ app.get('/*', function (req, res) {
 });
 
 // Use PORT from environment or default to 3000
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 80;
 app.listen(PORT, () => {
     console.log(`Servidor Frontend corriendo en puerto ${PORT}`);
 });
