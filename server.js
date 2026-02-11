@@ -4,7 +4,8 @@ const app = express();
 
 app.use(express.static(__dirname + '/dist/browser'));
 
-app.get('*', function (req, res) {
+// Fallback to index.html for SPA
+app.use((req, res) => {
     res.sendFile(path.join(__dirname + '/dist/browser/index.html'));
 });
 
