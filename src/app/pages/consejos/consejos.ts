@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../services/api.service';
 
@@ -13,11 +13,17 @@ export class ConsejosComponent implements OnInit {
   consejos: any[] = [];
   settings: any = {};
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    this.api.getConsejos().subscribe(data => this.consejos = data);
-    this.api.getSettings().subscribe(s => this.settings = s);
+    this.api.getConsejos().subscribe(data => {
+      this.consejos = data;
+      this.cdr.detectChanges();
+    });
+    this.api.getSettings().subscribe(s => {
+      this.settings = s;
+      this.cdr.detectChanges();
+    });
   }
 
   getConsejosByCategoria(categoria: string) {

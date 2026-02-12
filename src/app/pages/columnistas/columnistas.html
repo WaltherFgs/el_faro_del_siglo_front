@@ -13,7 +13,7 @@
 <!-- Content: Minimalist Grid -->
 <section class="bg-brand-paper py-40 px-6">
     <div class="max-w-7xl mx-auto">
-        <div class="mb-32 text-center reveal-on-scroll">
+        <div class="mb-32 text-center">
             <h2 class="text-4xl md:text-6xl font-serif font-bold text-brand-slate tracking-tighter mb-8 leading-tight">
                 Voces que Construyen <br><span class="text-brand-emerald italic">Criterio Nacional.</span>
             </h2>
@@ -24,44 +24,44 @@
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
             @if (loading) {
-                @for (i of [1,2,3]; track i) {
-                <div class="p-10 border border-brand-slate/5 bg-white animate-pulse">
-                    <div class="w-20 h-2 bg-brand-gold/20 mb-6"></div>
-                    <div class="w-48 h-8 bg-brand-slate/5 mb-6"></div>
-                    <div class="space-y-3">
-                        <div class="w-full h-3 bg-brand-slate/5"></div>
-                        <div class="w-5/6 h-3 bg-brand-slate/5"></div>
-                    </div>
+            @for (i of [1,2,3]; track i) {
+            <div class="p-10 border border-brand-slate/5 bg-white animate-pulse">
+                <div class="w-20 h-2 bg-brand-gold/20 mb-6"></div>
+                <div class="w-48 h-8 bg-brand-slate/5 mb-6"></div>
+                <div class="space-y-3">
+                    <div class="w-full h-3 bg-brand-slate/5"></div>
+                    <div class="w-5/6 h-3 bg-brand-slate/5"></div>
                 </div>
-                }
+            </div>
+            }
             } @else {
-                @for (c of columnistas; track c.id; let i = $index) {
-                <article class="group p-10 reveal-on-scroll transition-all duration-700"
-                    [ngClass]="i % 2 === 1 ? 'bg-brand-slate text-brand-paper' : 'border border-brand-slate/5 bg-white hover:border-brand-gold'"
-                    [style.transition-delay.ms]="i * 100">
-                    <h4 class="text-brand-gold text-[9px] font-bold uppercase tracking-[0.4em] mb-6">{{ c.especialidad }}
-                    </h4>
-                    <h3 class="text-3xl font-serif font-bold mb-6 transition-colors" [class.text-brand-slate]="i % 2 === 0"
-                        [class.group-hover:text-brand-emerald]="i % 2 === 0"
-                        [class.group-hover:text-brand-gold]="i % 2 === 1">
-                        {{ c.nombre }}</h3>
-                    <p class="font-serif leading-relaxed italic mb-10" [class.text-brand-slate/50]="i % 2 === 0"
-                        [class.text-brand-paper/50]="i % 2 === 1">
-                        {{ c.biografia }}
-                    </p>
-                    <a href="#"
-                        class="text-[9px] font-bold uppercase tracking-[0.4em] border-b border-brand-gold/30 pb-2 hover:border-brand-gold transition-all"
-                        [class.text-brand-paper]="i % 2 === 1">Perfil
-                        & Columnas</a>
-                </article>
-                }
+            @for (c of columnistas; track c.id; let i = $index) {
+            <article class="group p-10 animate-fade-in-fast"
+                [ngClass]="i % 2 === 1 ? 'bg-brand-slate text-brand-paper' : 'border border-brand-slate/5 bg-white hover:border-brand-gold'"
+                [style.animation-delay.ms]="i * 50">
+                <h4 class="text-brand-gold text-[9px] font-bold uppercase tracking-[0.4em] mb-6">{{ c.especialidad }}
+                </h4>
+                <h3 class="text-3xl font-serif font-bold mb-6 transition-colors" [class.text-brand-slate]="i % 2 === 0"
+                    [class.group-hover:text-brand-emerald]="i % 2 === 0"
+                    [class.group-hover:text-brand-gold]="i % 2 === 1">
+                    {{ c.nombre }}</h3>
+                <p class="font-sans leading-relaxed mb-6 text-brand-slate/80 text-lg"
+                    [class.text-brand-slate/80]="i % 2 === 0" [class.text-brand-paper/90]="i % 2 === 1">
+                    {{ c.biografia }}
+                </p>
+                <a href="#"
+                    class="text-[9px] font-bold uppercase tracking-[0.4em] border-b border-brand-gold/30 pb-2 hover:border-brand-gold transition-all"
+                    [class.text-brand-paper]="i % 2 === 1">Perfil
+                    & Columnas</a>
+            </article>
+            }
 
-                @if (columnistas.length === 0) {
-                <div class="lg:col-span-3 py-20 text-center border border-dashed border-brand-slate/10">
-                    <p class="text-brand-slate/20 text-2xl font-serif italic">Aguardando la conformación de la mesa
-                        editorial...</p>
-                </div>
-                }
+            @if (columnistas.length === 0) {
+            <div class="lg:col-span-3 py-20 text-center border border-dashed border-brand-slate/10">
+                <p class="text-brand-slate/20 text-2xl font-serif italic">Aguardando la conformación de la mesa
+                    editorial...</p>
+            </div>
+            }
             }
         </div>
     </div>
@@ -69,7 +69,7 @@
 
 <!-- Simple CTA -->
 <section class="bg-brand-slate py-40">
-    <div class="max-w-4xl mx-auto px-6 text-center reveal-on-scroll">
+    <div class="max-w-4xl mx-auto px-6 text-center">
         <h3 class="text-brand-gold text-[10px] font-bold uppercase tracking-[0.8em] mb-12 opacity-30">Contribuya al
             Debate</h3>
         <p class="text-3xl font-serif italic text-brand-paper/60 leading-tight">

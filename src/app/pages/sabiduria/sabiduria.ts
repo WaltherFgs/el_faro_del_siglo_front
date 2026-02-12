@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ElementRef, OnInit } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../services/api.service';
 
@@ -13,11 +13,17 @@ export class SabiduriaComponent implements AfterViewInit, OnInit {
   pilares: any[] = [];
   refranes: any[] = [];
 
-  constructor(private el: ElementRef, private api: ApiService) { }
+  constructor(private el: ElementRef, private api: ApiService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    this.api.getPilares().subscribe(data => this.pilares = data);
-    this.api.getRefranes().subscribe(data => this.refranes = data);
+    this.api.getPilares().subscribe(data => {
+      this.pilares = data;
+      this.cdr.detectChanges();
+    });
+    this.api.getRefranes().subscribe(data => {
+      this.refranes = data;
+      this.cdr.detectChanges();
+    });
   }
 
   ngAfterViewInit(): void {

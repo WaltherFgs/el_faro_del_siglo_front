@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ElementRef, OnInit } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../services/api.service';
 
@@ -12,10 +12,13 @@ import { ApiService } from '../../services/api.service';
 export class TareasComponent implements AfterViewInit, OnInit {
   tareas: any[] = [];
 
-  constructor(private el: ElementRef, private api: ApiService) { }
+  constructor(private el: ElementRef, private api: ApiService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    this.api.getTareas().subscribe(data => this.tareas = data);
+    this.api.getTareas().subscribe(data => {
+      this.tareas = data;
+      this.cdr.detectChanges();
+    });
   }
 
   getTareasBySeccion(seccion: string) {

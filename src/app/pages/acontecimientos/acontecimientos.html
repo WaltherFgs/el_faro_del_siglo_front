@@ -35,7 +35,7 @@
                     <h4 class="text-brand-gold text-[9px] font-bold uppercase tracking-[0.4em] mb-6">{{event.ubicacion
                         || 'Colombia'}}</h4>
                     <h2 class="text-3xl font-serif font-bold text-brand-slate mb-6 leading-tight">{{event.titulo}}</h2>
-                    <p class="text-brand-slate/60 text-lg font-serif italic leading-relaxed mb-8 whitespace-pre-wrap">
+                    <p class="text-brand-slate/80 text-lg font-sans leading-relaxed mb-8 whitespace-pre-wrap">
                         {{event.descripcion}}
                     </p>
 
@@ -48,7 +48,7 @@
                     @if (expandedEvents['event' + event.id]) {
                     <div class="mt-8 pt-8 border-t border-brand-slate/5 animate-fade-in">
                         <p
-                            class="text-brand-slate/50 text-base font-serif leading-relaxed text-pretty whitespace-pre-wrap">
+                            class="text-brand-slate/70 text-base font-sans leading-relaxed text-pretty whitespace-pre-wrap">
                             {{event.detalle}}
                         </p>
                     </div>

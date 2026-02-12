@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../services/api.service';
 
@@ -12,9 +12,12 @@ import { ApiService } from '../../services/api.service';
 export class ClimaComponent implements OnInit {
   settings: any = {};
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    this.api.getSettings().subscribe(s => this.settings = s);
+    this.api.getSettings().subscribe(s => {
+      this.settings = s;
+      this.cdr.detectChanges();
+    });
   }
 }

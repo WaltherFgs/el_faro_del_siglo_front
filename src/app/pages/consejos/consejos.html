@@ -22,7 +22,7 @@
                 </div>
                 <ul class="space-y-4">
                     @for (c of getConsejosByCategoria('hogar'); track c.id) {
-                    <li class="flex items-start gap-3 text-brand-slate/80">
+                    <li class="flex items-start gap-3 text-brand-slate/80 font-sans text-lg">
                         <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0"></span>
                         {{ c.texto }}
                     </li>
@@ -46,7 +46,7 @@
                 </div>
                 <ul class="space-y-4">
                     @for (c of getConsejosByCategoria('negocios'); track c.id) {
-                    <li class="flex items-start gap-3 text-brand-slate/80">
+                    <li class="flex items-start gap-3 text-brand-slate/80 font-sans text-lg">
                         <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0"></span>
                         {{ c.texto }}
                     </li>
@@ -70,7 +70,7 @@
                 </div>
                 <ul class="space-y-4">
                     @for (c of getConsejosByCategoria('relaciones'); track c.id) {
-                    <li class="flex items-start gap-3 text-brand-slate/80">
+                    <li class="flex items-start gap-3 text-brand-slate/80 font-sans text-lg">
                         <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0"></span>
                         {{ c.texto }}
                     </li>
@@ -89,7 +89,7 @@
                 <div class="text-4xl">💡</div>
                 <div>
                     <h4 class="text-lg font-serif font-bold text-brand-slate">Consejo Maestro del Día</h4>
-                    <p class="mt-2 text-brand-slate/70 italic text-lg leading-relaxed">
+                    <p class="mt-2 text-brand-slate/80 text-lg leading-relaxed font-sans">
                         "{{ settings.tip_del_dia || 'No pospongas para mañana lo que puedes hacer hoy. La
                         procrastinación es la ladrona del tiempo.' }}"
                     </p>

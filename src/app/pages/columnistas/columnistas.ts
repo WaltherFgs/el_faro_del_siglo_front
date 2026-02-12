@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ElementRef, OnInit } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../services/api.service';
 
@@ -13,7 +13,7 @@ export class ColumnistasComponent implements AfterViewInit, OnInit {
     columnistas: any[] = [];
     loading: boolean = true;
 
-    constructor(private el: ElementRef, private api: ApiService) { }
+    constructor(private el: ElementRef, private api: ApiService, private cdr: ChangeDetectorRef) { }
 
     ngOnInit(): void {
         this.loading = true;
@@ -21,29 +21,15 @@ export class ColumnistasComponent implements AfterViewInit, OnInit {
             next: (data) => {
                 this.columnistas = data;
                 this.loading = false;
-                // Esperar al siguiente ciclo de detección de cambios para observar nuevos elementos
-                setTimeout(() => this.setupObserver(), 0);
+                this.cdr.detectChanges(); // Force view update
             },
             error: () => {
                 this.loading = false;
+                this.cdr.detectChanges(); // Force view update
             }
         });
     }
 
     ngAfterViewInit(): void {
-        this.setupObserver();
-    }
-
-    private setupObserver(): void {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        const highlights = this.el.nativeElement.querySelectorAll('.reveal-on-scroll');
-        highlights.forEach((h: HTMLElement) => observer.observe(h));
     }
 }

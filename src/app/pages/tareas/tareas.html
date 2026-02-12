@@ -25,7 +25,7 @@
                             <input type="checkbox"
                                 class="w-8 h-8 rounded-sm border-brand-slate/10 text-brand-emerald focus:ring-brand-emerald">
                             <p
-                                class="text-brand-slate/80 text-2xl font-serif italic group-hover:text-brand-emerald transition-colors">
+                                class="text-brand-slate/80 text-xl font-sans group-hover:text-brand-emerald transition-colors">
                                 {{ t.texto }}</p>
                         </div>
                         }
@@ -50,7 +50,7 @@
                         @for (t of getTareasBySeccion('horario'); track t.id) {
                         <div class="border-l-2 border-brand-gold/30 pl-8">
                             <h4 class="text-brand-gold text-[9px] font-bold uppercase mb-4">{{ t.titulo }}</h4>
-                            <p class="text-xl font-serif italic opacity-60">{{ t.texto }}</p>
+                            <p class="text-lg font-sans opacity-80">{{ t.texto }}</p>
                         </div>
                         }
 

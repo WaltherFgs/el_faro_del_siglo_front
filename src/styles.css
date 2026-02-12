@@ -39,7 +39,7 @@
   .reveal-on-scroll {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
     will-change: opacity, transform;
   }
 
@@ -57,9 +57,7 @@
   }
 
   .reveal-on-scroll {
-    animation: reveal-fallback 0.1s forwards;
-    animation-delay: 2s;
-    /* Give JS 2 seconds to do it nicely, then force it */
+    /* Eliminamos el fallback lento de 2s */
   }
 
   .parallax-bg {
@@ -86,6 +84,10 @@
 
   .animate-fade-in {
     animation: fadeIn 2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .animate-fade-in-fast {
+    animation: fadeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 
   @keyframes fadeIn {

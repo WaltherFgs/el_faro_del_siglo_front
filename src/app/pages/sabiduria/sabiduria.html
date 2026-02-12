@@ -28,26 +28,26 @@
                             }}</h4>
                         <h3 class="text-4xl md:text-5xl font-serif font-bold italic leading-tight mb-8">{{ p.titulo }}
                         </h3>
-                        <p class="text-brand-slate/50 text-xl font-serif italic leading-relaxed"
-                            [class.text-brand-paper/50]="p.numero === 'Pilar II'">
+                        <p class="text-brand-slate/70 text-lg font-sans leading-relaxed"
+                            [class.text-brand-paper/80]="p.numero === 'Pilar II'">
                             "{{ p.frase_destacada }}"
                         </p>
                     </div>
                     <div [class.md:col-span-3]="p.numero === 'Pilar I'" class="space-y-12"
                         [class.mt-12]="p.numero !== 'Pilar I'">
                         <article class="group">
-                            <p class="text-2xl font-serif italic leading-tight transition-colors"
-                                [class.text-brand-slate/80]="p.numero !== 'Pilar II'"
-                                [class.text-brand-paper/80]="p.numero === 'Pilar II'"
+                            <p class="text-xl font-sans leading-tight transition-colors"
+                                [class.text-brand-slate/90]="p.numero !== 'Pilar II'"
+                                [class.text-brand-paper/90]="p.numero === 'Pilar II'"
                                 [class.group-hover:text-brand-emerald]="p.numero !== 'Pilar II'"
                                 [class.group-hover:text-brand-gold]="p.numero === 'Pilar II'">
                                 "{{ p.item_1 }}"</p>
                         </article>
                         <article class="group pt-8 border-t border-brand-slate/5"
                             [class.border-white/5]="p.numero === 'Pilar II'">
-                            <p class="text-2xl font-serif italic leading-tight transition-colors"
-                                [class.text-brand-slate/80]="p.numero !== 'Pilar II'"
-                                [class.text-brand-paper/80]="p.numero === 'Pilar II'"
+                            <p class="text-xl font-sans leading-tight transition-colors"
+                                [class.text-brand-slate/90]="p.numero !== 'Pilar II'"
+                                [class.text-brand-paper/90]="p.numero === 'Pilar II'"
                                 [class.group-hover:text-brand-emerald]="p.numero !== 'Pilar II'"
                                 [class.group-hover:text-brand-gold]="p.numero === 'Pilar II'">
                                 "{{ p.item_2 }}"</p>

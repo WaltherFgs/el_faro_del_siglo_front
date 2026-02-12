@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../services/api.service';
 
@@ -12,12 +12,13 @@ import { ApiService } from '../../services/api.service';
 export class ReflexionesComponent implements OnInit, AfterViewInit {
   articulos: any[] = [];
 
-  constructor(private el: ElementRef, private apiService: ApiService) { }
+  constructor(private el: ElementRef, private apiService: ApiService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.apiService.getArticulos().subscribe(data => {
       // Filtrar solo los de tipo reflexion para esta página
       this.articulos = data.filter(a => a.tipo === 'reflexion');
+      this.cdr.detectChanges();
       setTimeout(() => this.observeElements(), 100);
     });
   }
