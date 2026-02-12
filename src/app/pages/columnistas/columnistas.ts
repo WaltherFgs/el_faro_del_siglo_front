@@ -21,6 +21,8 @@ export class ColumnistasComponent implements AfterViewInit, OnInit {
             next: (data) => {
                 this.columnistas = data;
                 this.loading = false;
+                // Esperar al siguiente ciclo de detección de cambios para observar nuevos elementos
+                setTimeout(() => this.setupObserver(), 0);
             },
             error: () => {
                 this.loading = false;
@@ -29,6 +31,10 @@ export class ColumnistasComponent implements AfterViewInit, OnInit {
     }
 
     ngAfterViewInit(): void {
+        this.setupObserver();
+    }
+
+    private setupObserver(): void {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
