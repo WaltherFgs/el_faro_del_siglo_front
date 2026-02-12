@@ -19,7 +19,51 @@
                     class="text-[9px] font-bold uppercase tracking-[0.4em] text-brand-slate/40 hover:text-brand-emerald transition-all">Refranes</a>
                 <a routerLink="/acontecimientos" routerLinkActive="text-brand-emerald"
                     class="text-[9px] font-bold uppercase tracking-[0.4em] text-brand-slate/40 hover:text-brand-emerald transition-all">Historia</a>
+                <a routerLink="/tareas" routerLinkActive="text-brand-emerald"
+                    class="text-[9px] font-bold uppercase tracking-[0.4em] text-brand-slate/40 hover:text-brand-emerald transition-all">Tareas</a>
+                <a routerLink="/consejos" routerLinkActive="text-brand-emerald"
+                    class="text-[9px] font-bold uppercase tracking-[0.4em] text-brand-slate/40 hover:text-brand-emerald transition-all">Consejos</a>
+                <a routerLink="/clima" routerLinkActive="text-brand-emerald"
+                    class="text-[9px] font-bold uppercase tracking-[0.4em] text-brand-slate/40 hover:text-brand-emerald transition-all">Clima</a>
             </div>
+
+            <!-- Hamburger Button -->
+            <div class="lg:hidden flex items-center">
+                <button (click)="toggleMenu()"
+                    class="text-brand-slate hover:text-brand-emerald focus:outline-none transition-colors p-2">
+                    <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path *ngIf="!isOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                        <path *ngIf="isOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div *ngIf="isOpen" class="lg:hidden bg-brand-paper border-b border-brand-slate/5">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+            <a routerLink="/columnistas" (click)="toggleMenu()" routerLinkActive="bg-brand-slate/5 text-brand-emerald"
+                class="block px-3 py-2 text-base font-bold uppercase tracking-widest text-brand-slate/60 hover:text-brand-emerald hover:bg-brand-slate/5 rounded-md">Columnistas</a>
+            <a routerLink="/actualidad" (click)="toggleMenu()" routerLinkActive="bg-brand-slate/5 text-brand-emerald"
+                class="block px-3 py-2 text-base font-bold uppercase tracking-widest text-brand-slate/60 hover:text-brand-emerald hover:bg-brand-slate/5 rounded-md">Actualidad</a>
+            <a routerLink="/reflexiones" (click)="toggleMenu()" routerLinkActive="bg-brand-slate/5 text-brand-emerald"
+                class="block px-3 py-2 text-base font-bold uppercase tracking-widest text-brand-slate/60 hover:text-brand-emerald hover:bg-brand-slate/5 rounded-md">Reflexiones</a>
+            <a routerLink="/sabiduria" (click)="toggleMenu()" routerLinkActive="bg-brand-slate/5 text-brand-emerald"
+                class="block px-3 py-2 text-base font-bold uppercase tracking-widest text-brand-slate/60 hover:text-brand-emerald hover:bg-brand-slate/5 rounded-md">Sabiduría</a>
+            <a routerLink="/proverbios" (click)="toggleMenu()" routerLinkActive="bg-brand-slate/5 text-brand-emerald"
+                class="block px-3 py-2 text-base font-bold uppercase tracking-widest text-brand-slate/60 hover:text-brand-emerald hover:bg-brand-slate/5 rounded-md">Refranes</a>
+            <a routerLink="/acontecimientos" (click)="toggleMenu()"
+                routerLinkActive="bg-brand-slate/5 text-brand-emerald"
+                class="block px-3 py-2 text-base font-bold uppercase tracking-widest text-brand-slate/60 hover:text-brand-emerald hover:bg-brand-slate/5 rounded-md">Historia</a>
+            <a routerLink="/tareas" (click)="toggleMenu()" routerLinkActive="bg-brand-slate/5 text-brand-emerald"
+                class="block px-3 py-2 text-base font-bold uppercase tracking-widest text-brand-slate/60 hover:text-brand-emerald hover:bg-brand-slate/5 rounded-md">Tareas</a>
+            <a routerLink="/consejos" (click)="toggleMenu()" routerLinkActive="bg-brand-slate/5 text-brand-emerald"
+                class="block px-3 py-2 text-base font-bold uppercase tracking-widest text-brand-slate/60 hover:text-brand-emerald hover:bg-brand-slate/5 rounded-md">Consejos</a>
+            <a routerLink="/clima" (click)="toggleMenu()" routerLinkActive="bg-brand-slate/5 text-brand-emerald"
+                class="block px-3 py-2 text-base font-bold uppercase tracking-widest text-brand-slate/60 hover:text-brand-emerald hover:bg-brand-slate/5 rounded-md">Clima</a>
         </div>
     </div>
 </nav>
