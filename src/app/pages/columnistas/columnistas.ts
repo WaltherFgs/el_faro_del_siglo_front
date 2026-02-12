@@ -11,11 +11,21 @@ import { ApiService } from '../../services/api.service';
 })
 export class ColumnistasComponent implements AfterViewInit, OnInit {
     columnistas: any[] = [];
+    loading: boolean = true;
 
     constructor(private el: ElementRef, private api: ApiService) { }
 
     ngOnInit(): void {
-        this.api.getAutores().subscribe(data => this.columnistas = data);
+        this.loading = true;
+        this.api.getAutores().subscribe({
+            next: (data) => {
+                this.columnistas = data;
+                this.loading = false;
+            },
+            error: () => {
+                this.loading = false;
+            }
+        });
     }
 
     ngAfterViewInit(): void {
